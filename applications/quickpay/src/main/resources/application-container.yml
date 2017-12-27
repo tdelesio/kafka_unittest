@@ -1,0 +1,17 @@
+ 
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka.techolution.qa:8761/eureka/
+  instance:
+    hostname: .techolution.qa
+    status-page-url: http://.techolution.com:${server.port}/info
+    health-check-url: http://.techolution.com:${server.port}/health
+    home-page-url: http://.techolution.com:${server.port}/
+
+
+  spring:
+
+
+

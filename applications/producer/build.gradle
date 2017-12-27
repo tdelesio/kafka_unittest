@@ -1,0 +1,65 @@
+apply from: "../../java.gradle"
+
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+    }
+}
+
+apply plugin: 'docker'
+apply plugin: 'application'
+mainClassName = 'com.techolution.MessageApplication'
+
+distDocker {
+    dryRun = true
+}
+
+task buildDocker(type: Docker) {
+    baseImage = 'davidcaste/alpine-java-unlimited-jce:jdk8'
+    push = project.hasProperty('push')
+    tag = 'nexus.techolution.com:8123/kafka/producer'
+    addFile {
+        from jar
+        rename {'app.jar'}
+    }
+
+    entryPoint(['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
+}
+
+buildDocker.dependsOn(build)
+
+dependencies {
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testCompile "org.springframework.kafka:spring-kafka-test:$kafkaVersion"
+  
+  compile "org.springframework.boot:spring-boot-devtools:$springBootVersion"
+    compile "org.springframework.kafka:spring-kafka:$kafkaVersion"
+  
+
+  
+  
+  
+
+  compile "org.springframework.boot:spring-boot-starter-actuator"
+  
+//  compile "org.codehaus.groovy:groovy:2.4.4"
+
+  
+  
+  
+  
+  
+
+  
+
+    
+//    compile project(":components:common")
+
+}
+
+
+

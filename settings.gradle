@@ -1,0 +1,4 @@
+rootProject.name = "kafka"
+
+include "applications:producer"
+include "applications:consumer"

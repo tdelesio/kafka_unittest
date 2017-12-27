@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+      name: quickpay
+  profiles:
+    active: local
+
+jwt:
+  signingKey: jpmc
+
+
+
+    
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,15 @@
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    status-page-url: http://localhost:${server.port}/info
+    health-check-url: http://localhost:${server.port}/health
+    home-page-url: http://localhost:${server.port}/
+
+
+  spring: 
+
+

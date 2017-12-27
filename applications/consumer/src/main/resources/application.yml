@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+      name: consumer
+  profiles:
+    active: local
+
+
+kafka:
+  bootstrapAddress: localhost:9092
+  topic:
+    receiver: receiver.t
+    
+
+
+
+
+
+
+
+ 
